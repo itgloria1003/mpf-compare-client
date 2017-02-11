@@ -1,0 +1,25 @@
+<div class="container">
+	<h1>List all the MPF</h1>
+	
+	<table class="table">
+		<thead>
+		<tr>
+		<th>Fund Type</th>
+		<th>Investment Objectives</th>
+		<th>Investment Instruments</th>
+		<th>Major Risk</th>
+		<th>Feature</th>
+		</tr>		
+		</thead>
+		<tbody>
+			<tr *ngFor="let item of mpfDetails">
+				<td>{{item.fundType}}</td>				
+				<td>{{item.investObjective}}</td>
+				<td>{{item.investInstruments}}</td>
+				<td [innerHtml]="item.majorRisk | nl2brPipe"></td>
+				<td [innerHtml]="item.feature | nl2brPipe"></td>
+			</tr>
+
+		</tbody>
+	</table>
+</div>
