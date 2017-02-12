@@ -4,5 +4,7 @@
 // The list of which env maps to which file can be found in `angular-cli.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  api_fund_type_list :'http://localhost:8080/fundtype/list',
+  api_fund_type_action:'http://localhost:8080/fundtype/action?requestAction='
 };

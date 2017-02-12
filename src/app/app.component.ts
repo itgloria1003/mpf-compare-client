@@ -8,5 +8,5 @@ import {ListFundTypeComponent} from './list-fund-type/list-fund-type.component';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'List all fund types';
+  title = 'MPF compare';
 }
