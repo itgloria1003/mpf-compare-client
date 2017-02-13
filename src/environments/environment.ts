@@ -6,5 +6,6 @@
 export const environment = {
   production: false,
   api_fund_type_list :'http://localhost:8080/fundtype/list',
-  api_fund_type_action:'http://localhost:8080/fundtype/action?requestAction='
+  api_fund_type_action:'http://localhost:8080/fundtype/action?requestAction=',
+  api_fund_type_stat: 'http://localhost:8080/fundtype/stat?asOfDate='
 };

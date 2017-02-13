@@ -1,0 +1,32 @@
+<div class="container">
+<div class="col-md-6">
+ <h3>
+  Net Asset Values (2) of Approved Constituent Funds of MPF Schemes by Type (HK$ million)
+  </h3>
+  <p>
+  Source from some table <a href="http://www.hkifa.org.hk/eng/MPF-Statistics.aspx">HKIFA - MPF Statistics</a>
+  </p>
+  
+  <form [formGroup]="showChartForm" (ngSubmit)="showChart($event)">
+    <div class="form-group">
+      <label for="asOfDate">As Of Date</label>
+      <select class="form-control" id="asOfDate" required formControlName="asOfDate">>
+        <option *ngFor="let item of asOfDateList" [value]="item">{{item}}</option>
+      </select>
+</div>
+    
+  <button type="submit">Submit</button>
+</form>
+
+	
+</div>
+  <div class="col-md-6">
+    <canvas #chart# baseChart
+                [data]="pieChartData"
+                [labels]="pieChartLabels"
+                [chartType]="pieChartType"
+                (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)"></canvas>
+  </div>
+
+</div>

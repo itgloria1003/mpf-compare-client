@@ -2,23 +2,31 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+// NG2-Charts
+import { ChartsModule } from 'ng2-charts/ng2-charts';
+//Reactive forms
+import { ReactiveFormsModule } from '@angular/forms'; 
 
 import { AppComponent } from './app.component';
 import { ListFundTypeComponent } from './list-fund-type/list-fund-type.component';
 import { MpfFundTypeService} from './mpf-fund-type.service';
-import { Nl2brPipePipe } from './nl2br-pipe.pipe'; 
+import { Nl2brPipePipe } from './nl2br-pipe.pipe';
+import { FundTypeChartComponent } from './fund-type-chart/fund-type-chart.component'; 
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ListFundTypeComponent,
-    Nl2brPipePipe
+    Nl2brPipePipe,
+    FundTypeChartComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    ChartsModule,
+    ReactiveFormsModule
   ],
   providers: [MpfFundTypeService],
   bootstrap: [AppComponent]
