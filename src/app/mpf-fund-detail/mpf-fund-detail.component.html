@@ -1,0 +1,79 @@
+<div class="container">
+  <h3>
+    <u> Compare MPF</u>
+  </h3>
+  <p>
+    Data Source from <a target="_blank" href="http://cplatform.mpfa.org.hk/MPFA/eng/cf_list.jsp">MPFA </a>
+  </p>
+  <div class="row">
+     <form [formGroup]="mpf1Form" (ngSubmit)="getMpfDetail1()">
+    <div class="form-group">
+      <label for="filterFundType">Fund Type</label>
+      <select class="form-control" 
+        [(ngModel)]="model.filterFundType"
+        (change)="refreshFilters()" id="filterFundType" required formControlName="filterFundType">
+        <option *ngFor="let item of mpfFilterLists1.fundtypeList" [value]="item.code">{{item.value}}</option>
+      </select>
+      <label for="filterTrustee">Trustee</label>
+      <select class="form-control" 
+        [(ngModel)]="model.filterTrustee"
+        (change)="refreshFilters()" id="filterTrustee" required formControlName="filterTrustee">
+        <option *ngFor="let item of mpfFilterLists1.trusteeList" [value]="item.code">{{item.value}}</option>
+      </select>
+      <label for="filterMpfId">MPF Fund Sceheme</label>
+      <select class="form-control" 
+        [(ngModel)]="model.filterMpfId"
+         id="filterMpfId" required formControlName="filterMpfId">
+        <option *ngFor="let item of mpfFilterLists1.mpfFundIdList" [value]="item.code">{{item.value}}</option>
+      </select>
+
+      
+</div>
+{{model.filterFundType}}
+    
+  <button type="submit">Submit</button>
+</form>
+
+    <div class="col-md-6"> 
+      <div *ngIf="mpfFundDetail1 !=null">
+        <h4>{{mpfFundDetail1.scheme}} - [{{mpfFundDetail1.constituentFund}}] </h4>      
+        <dl class="row">
+          <dt class="col-sm-3">Trustee</dt>
+          <dd class="col-sm-3">{{mpfFundDetail1.trustee}}</dd>
+          <dt class="col-sm-3">Fund Type</dt>
+          <dd class="col-sm-3">{{mpfFundDetail1.filterFundType}}</dd>
+        </dl>
+        <dl class="row">
+          <dt class="col-sm-3">Scheme</dt>
+          <dd class="col-sm-9">{{mpfFundDetail1.scheme}}</dd>
+        </dl>
+        <dl class="row">
+          <dt class="col-sm-3">Constituent Fund</dt>
+          <dd class="col-sm-9">{{mpfFundDetail1.constituentFund}}</dd>
+        </dl>
+        <dl class="row">
+          <dt class="col-sm-3">Lastest FER (%)</dt>
+          <dd class="col-sm-9">{{mpfFundDetail1.latestFER | nullToNaPipe}}</dd>
+        </dl>
+        <dl class="row">
+          <dt class="col-sm-3">OCI 1 year</dt>
+          <dd class="col-sm-3">{{mpfFundDetail1.oci1yr | nullToNaPipe}}</dd>
+          <dt class="col-sm-3">OCI 5 year</dt>
+          <dd class="col-sm-3">{{mpfFundDetail1.oci5yr | nullToNaPipe}}</dd>
+        </dl>
+        <dl class="row">
+          <dt class="col-sm-3">Fund Risk Indicator (%)</dt>
+          <dd class="col-sm-9">{{mpfFundDetail1.fundRiskIndicator | nullToNaPipe}}</dd>
+        </dl>
+        <dl class="row">
+          <dt class="col-sm-3">Annualized Return 5 Year (%) </dt>
+          <dd class="col-sm-3">{{mpfFundDetail1.annualReturn5yr | nullToNaPipe}}</dd>
+           <dt class="col-sm-3">Annualized Return 10 Year (%)</dt>
+          <dd class="col-sm-3">{{mpfFundDetail1.annualReturn10yr |nullToNaPipe}}</dd>
+        </dl>
+      </div>
+    </div>
+    
+  </div>
+
+</div>

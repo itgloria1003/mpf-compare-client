@@ -1,7 +1,25 @@
-<ul class="nav nav-tabs">
-  <li role="presentation" class="active"><a href="#">List MPF Fund Types</a></li>
-  <li role="presentation"><a href="#">List of MPF trustees and schemes</a></li>
-  <li role="presentation"><a href="#">Compare MPF schemes</a></li>
-</ul>
-<app-list-fund-type></app-list-fund-type>
-<app-fund-type-chart></app-fund-type-chart>
+
+  <div class="container">
+  <button (click)="onClickScrape()">Scrape the page and cache</button>
+  <button (click)="onClickDelete()">Delete the cache</button>
+  <div class="alert " [ngClass]="{
+			'alert-success': actionResult.success && touched,
+			'alert-danger':  !actionResult.success	
+		}">
+  {{actionResult.message}}</div>
+  </div>
+  <ul class="nav nav-tabs" [hidden]="isLoading">
+    <li role="presentation" (click)="selectTab('0')" [class.active]="activeTab ==0"><a href="#mpfcompare">List MPF Fund Types</a></li>
+    <li role="presentation" (click)="selectTab('1')" [class.active]="activeTab ==1"><a href="#mpfcompare">List of MPF trustees and schemes</a></li>
+    <li role="presentation" (click)="selectTab('2')" [class.active]="activeTab ==2"><a href="#mpfcompare">Compare MPF schemes</a></li>
+  </ul>
+  <app-spinner [visible]="isLoading" ></app-spinner>
+
+  <div class="section" *ngIf="activeTab==0 && !isLoading" >
+    <app-list-fund-type  ></app-list-fund-type>
+    <app-fund-type-chart ></app-fund-type-chart>
+
+  </div>
+  <div class="section" *ngIf="activeTab==2 && !isLoading" >
+     <app-mpf-fund-detail ></app-mpf-fund-detail>
+  </div>

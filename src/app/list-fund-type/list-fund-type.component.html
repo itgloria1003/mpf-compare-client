@@ -3,14 +3,7 @@
 	<p> Data Source from 
 		<a target="_blank" href="http://minisite.mpfa.org.hk/mpfie/en/jjfive/detailed-profile.html">MPFA - MPF Investment Education </a>
 	</p>
-	<div class="alert "
-		[ngClass]="{
-			'alert-success': actionResult.success && touched,
-			'alert-danger':  !actionResult.success	
-		}">
-		{{actionResult.message}}</div>
-	<button (click)="onClickScrape()" >Scrape the page and cache</button>
-	<button (click)="onClickDelete()" >Delete the cache</button>
+
 	<table class="table">
 		<thead>
 		<tr>
@@ -32,4 +25,5 @@
 
 		</tbody>
 	</table>
+	
 </div>

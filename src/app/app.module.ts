@@ -11,7 +11,10 @@ import { AppComponent } from './app.component';
 import { ListFundTypeComponent } from './list-fund-type/list-fund-type.component';
 import { MpfFundTypeService} from './mpf-fund-type.service';
 import { Nl2brPipePipe } from './nl2br-pipe.pipe';
-import { FundTypeChartComponent } from './fund-type-chart/fund-type-chart.component'; 
+import { FundTypeChartComponent } from './fund-type-chart/fund-type-chart.component';
+import { MpfFundDetailComponent } from './mpf-fund-detail/mpf-fund-detail.component';
+import { NullToNaPipePipe } from './null-to-na-pipe.pipe';
+import { SpinnerComponent } from './spinner/spinner.component'; 
 
 
 @NgModule({
@@ -19,7 +22,10 @@ import { FundTypeChartComponent } from './fund-type-chart/fund-type-chart.compon
     AppComponent,
     ListFundTypeComponent,
     Nl2brPipePipe,
-    FundTypeChartComponent
+    FundTypeChartComponent,
+    MpfFundDetailComponent,
+    NullToNaPipePipe,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,
