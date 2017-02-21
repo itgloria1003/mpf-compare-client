@@ -12,9 +12,13 @@
     <li role="presentation" (click)="selectTab('0')" [class.active]="activeTab ==0"><a href="#mpfcompare">List MPF Fund Types</a></li>
     <li role="presentation" (click)="selectTab('1')" [class.active]="activeTab ==1"><a href="#mpfcompare">List of MPF trustees and schemes</a></li>
     <li role="presentation" (click)="selectTab('2')" [class.active]="activeTab ==2"><a href="#mpfcompare">Compare MPF schemes</a></li>
+    <li role="presentation" (click)="selectTab('3')" [class.active]="activeTab ==3"><a href="#mpfcompare">MPF Press</a></li>
   </ul>
   <app-spinner [visible]="isLoading" ></app-spinner>
 
+
+     
+  
   <div class="section" *ngIf="activeTab==0 && !isLoading" >
     <app-list-fund-type  ></app-list-fund-type>
     <app-fund-type-chart ></app-fund-type-chart>
@@ -23,3 +27,9 @@
   <div class="section" *ngIf="activeTab==2 && !isLoading" >
      <app-mpf-fund-detail ></app-mpf-fund-detail>
   </div>
+  <div class="section" *ngIf="activeTab==3 && !isLoading" >
+    <app-feed-card></app-feed-card>
+  </div>
+  
+
+ 

@@ -14,7 +14,9 @@ import { Nl2brPipePipe } from './nl2br-pipe.pipe';
 import { FundTypeChartComponent } from './fund-type-chart/fund-type-chart.component';
 import { MpfFundDetailComponent } from './mpf-fund-detail/mpf-fund-detail.component';
 import { NullToNaPipePipe } from './null-to-na-pipe.pipe';
-import { SpinnerComponent } from './spinner/spinner.component'; 
+import { SpinnerComponent } from './spinner/spinner.component';
+import { FeedCardComponent } from './feed-card/feed-card.component';
+import { StripHtmlTagsPipe } from './pipe/strip-html-tags.pipe'; 
 
 
 @NgModule({
@@ -25,7 +27,9 @@ import { SpinnerComponent } from './spinner/spinner.component';
     FundTypeChartComponent,
     MpfFundDetailComponent,
     NullToNaPipePipe,
-    SpinnerComponent
+    SpinnerComponent,
+    FeedCardComponent,
+    StripHtmlTagsPipe
   ],
   imports: [
     BrowserModule,

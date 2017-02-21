@@ -16,9 +16,6 @@ import 'rxjs/add/operator/catch';
 export class ListFundTypeComponent implements OnInit {
     mpfDetails:FundTypeDetail[];
     
-   
-    
-
     constructor(private listMpfService: MpfFundTypeService) { 
     
      

@@ -1,0 +1,12 @@
+<div class="container">
+  <p>Source <a [attr.href]="rssUrl" target="_blank">MPF RSS feed</a><p>
+  <div *ngFor="let feed of feeds ;let i= index" [ngSwitch]="$index % 3">
+    <div class="row" *ngSwitchCase="0"></div>
+    <div class="col-md-4">
+      <h4><u>{{feed.title}}</u></h4>
+      <p> 
+      {{feed.description | stripHtmlTags :200 }}...
+      <a [href]="feed.link" target="_blank">Click here for details</a></p>
+      {{feed.author}} - {{feed.pubDate | date:'dd-MM-yyyy'}}
+    </div>
+  </div>

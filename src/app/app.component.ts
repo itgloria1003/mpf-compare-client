@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { ListFundTypeComponent } from './list-fund-type/list-fund-type.component';
 import { MpfFundDetailComponent } from './mpf-fund-detail/mpf-fund-detail.component';
-
+import { FeedCardComponent } from './feed-card/feed-card.component';
 import { MpfFundTypeService } from './mpf-fund-type.service';
+import { FeedService } from './feed-service.service';
 import { OperationResult } from './operation-result';
 import { Observable } from 'rxjs/Observable';
 
@@ -10,7 +11,7 @@ import { Observable } from 'rxjs/Observable';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [MpfFundTypeService]
+  providers: [MpfFundTypeService,FeedService]
 })
 export class AppComponent {
   title = 'MPF compare';
