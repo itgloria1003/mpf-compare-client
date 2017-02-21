@@ -1,6 +1,6 @@
 import { Component, OnInit ,ViewChild} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MpfFundTypeService} from '../mpf-fund-type.service';
+import { MpfFundService} from '../mpf-fund.service';
 import { MpfFundTypeStat } from '../mpf-fund-type-stat';
 import {BaseChartDirective} from 'ng2-charts';
 
@@ -13,7 +13,7 @@ export class FundTypeChartComponent implements OnInit {
   showChartForm = new FormGroup({
      asOfDate: new FormControl('',Validators.required)
   });
-  constructor(private mpfFundTypeService: MpfFundTypeService) { }
+  constructor(private MpfFundService: MpfFundService) { }
 
   ngOnInit() {
   }
@@ -29,7 +29,7 @@ export class FundTypeChartComponent implements OnInit {
 
   public showChart(e:any):void{
     console.log(this.showChartForm.controls['asOfDate'].value);
-    this.mpfFundTypeService.getFundTypeStats(this.showChartForm.controls['asOfDate'].value)
+    this.MpfFundService.getFundTypeStats(this.showChartForm.controls['asOfDate'].value)
     .subscribe(response => {
       this.statList = response;
       this.pieChartData= [];

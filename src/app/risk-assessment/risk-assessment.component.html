@@ -1,0 +1,69 @@
+<div class="container">
+  <div class="registrationform">
+    <form class="form-vertical" [formGroup]="form" (ngSubmit)="onSubmit()">
+      <fieldset>
+        <legend>Risk Assessment <i class="fa fa-pencil pull-right"></i></legend>
+        <div class="form-group" *ngFor="let question of questions;let qidx = index;">
+          <label class="col-lg-10 control-label">
+            {{question.question}}
+          </label>
+          <div class="col-lg-10">
+            <div class="radio" *ngFor="let answer of question.answerOptions">
+              <label>
+                                    <input type="radio"  
+                                   [(ngModel)]="question.selected"
+                                   formControlName="option{{qidx}}"
+                                    id="{{qidx}}_{{key}}_option" 
+                                    required 
+                                     [value]="answer.key" 
+                                    >
+                               {{answer.key}}. {{answer.text}}
+                                </label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-lg-12">
+            <button type="reset" (click)="onReset()" class="btn btn-warning">
+                                Cancel</button>
+            <button type="submit" [disabled]="!form.valid" class="btn btn-primary">
+                                Submit</button>
+          </div>
+          <div class="col-lg-12">
+            <p [hidden]="form.valid">Please answer all the questions</p>
+          </div>
+        </div>
+        <div class="form-group" *ngIf="isSubmitted">
+          <div class="col-lg-12">
+            <p class="text-center text-primary "> Risk Tolerance Level: {{riskCatDesc}}
+            </p>
+            <hr>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+    <div class="table-responsive" *ngIf="isSubmitted">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Fund Type</th>
+            <th>Investment Objectives</th>
+            <th>Investment Instruments</th>
+            <th>Risk Indicator</th>
+            <th>Annualized Return 5 year </th>
+            <th>Annualized Return 10 year </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of mpfFundDetails">
+            <td>{{item.fundType}}</td>
+            <td>{{item.scheme}}</td>
+            <td>{{item.trustee}}</td>
+            <td>{{item.fundRiskIndicator | nullToNaPipe | percent}}</td>
+            <td>{{item.annualReturn5yr | nullToNaPipe | percent}}</td>
+            <td>{{item.annualReturn10yr| nullToNaPipe | percent}}</td>
+            
+          </tr>
+        </tbody>
+      </table>
+    </div>

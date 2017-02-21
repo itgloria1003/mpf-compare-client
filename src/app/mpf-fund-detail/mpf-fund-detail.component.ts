@@ -5,7 +5,7 @@ import { MpfFundDetail } from '../mpf-fund-detail';
 import { FilterParam } from '../filter-param';
 import {MpfFilterLists} from  '../mpf-filter-lists';
 import { Observable } from 'rxjs/Observable';
-import { MpfFundTypeService } from '../mpf-fund-type.service';
+import { MpfFundService } from '../mpf-fund.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -15,7 +15,7 @@ import 'rxjs/add/operator/catch';
   selector: 'app-mpf-fund-detail',
   templateUrl: './mpf-fund-detail.component.html',
   styleUrls: ['./mpf-fund-detail.component.css'],
-  providers: [MpfFundTypeService]
+  providers: [MpfFundService]
 })
 export class MpfFundDetailComponent implements OnInit {
 
@@ -35,7 +35,7 @@ export class MpfFundDetailComponent implements OnInit {
 
   @ViewChild(BaseChartDirective) rChart: BaseChartDirective;
 
-  constructor(private listMpfService: MpfFundTypeService) {
+  constructor(private listMpfService: MpfFundService) {
     this.loadFunds();
     this.refreshFilters();
   }
@@ -48,6 +48,8 @@ export class MpfFundDetailComponent implements OnInit {
     .subscribe(detail=> {
         this.mpfFilterLists1 = detail;
         console.log(detail);
+      },()=>{
+        alert('error in filtering the fund type ');
       });
     console.log('Complete loading filter list');
   }
@@ -55,7 +57,7 @@ export class MpfFundDetailComponent implements OnInit {
 
   loadFunds() {
     console.log('Start loading MPF data');
-    this.listMpfService.getMpfFundDetails()
+    this.listMpfService.getMpfFundDetails({})
       .subscribe(details => {
         this.mpfFundDetail1 = details[0];
         this.mpfFundDetail2 = details[1];

@@ -1,16 +1,16 @@
 /* tslint:disable:no-unused-variable */
 
 import { TestBed, async, inject } from '@angular/core/testing';
-import { MpfFundTypeService } from './mpf-fund-type.service';
+import { MpfFundService } from './mpf-fund.service';
 
-describe('MpfFundTypeService', () => {
+describe('MpfFundService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [MpfFundTypeService]
+      providers: [MpfFundService]
     });
   });
 
-  it('should ...', inject([MpfFundTypeService], (service: MpfFundTypeService) => {
+  it('should ...', inject([MpfFundService], (service: MpfFundService) => {
     expect(service).toBeTruthy();
   }));
 });

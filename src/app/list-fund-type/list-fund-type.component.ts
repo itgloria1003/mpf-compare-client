@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MpfFundTypeService} from '../mpf-fund-type.service';
+import { MpfFundService} from '../mpf-fund.service';
 import {FundTypeDetail} from '../fund-type-detail';
 
 import { Observable }     from 'rxjs/Observable';
@@ -11,12 +11,12 @@ import 'rxjs/add/operator/catch';
   selector: 'app-list-fund-type',
   templateUrl: './list-fund-type.component.html',
   styleUrls: ['./list-fund-type.component.css'],
-  providers: [MpfFundTypeService]
+  providers: [MpfFundService]
 })
 export class ListFundTypeComponent implements OnInit {
     mpfDetails:FundTypeDetail[];
     
-    constructor(private listMpfService: MpfFundTypeService) { 
+    constructor(private listMpfService: MpfFundService) { 
     
      
       this.loadFundTypes();

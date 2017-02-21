@@ -14,7 +14,7 @@ import 'rxjs/add/operator/catch';
 
 
 @Injectable()
-export class MpfFundTypeService {
+export class MpfFundService {
 
     private fundtypelist = environment.api_fund_type_list; 
     private fundtypeScrapeUrl = environment.api_fund_type_action;
@@ -24,8 +24,12 @@ export class MpfFundTypeService {
 
     constructor(private http: Http) { }
 
-    getMpfFundDetails(): Observable<MpfFundDetail[]>{
-        return this.http.get(this.URL_FUND_DETAIL)
+    
+    getMpfFundDetails(criteria:any): Observable<MpfFundDetail[]>{
+        var params = new URLSearchParams();
+         params.set('riskCat', criteria.riskCat); // the user's search value
+
+        return this.http.get(this.URL_FUND_DETAIL,{search:params})
         .map(response => response.json() as MpfFundDetail[])
         .catch(this.handleError);
     }

@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { ListFundTypeComponent } from './list-fund-type/list-fund-type.component';
 import { MpfFundDetailComponent } from './mpf-fund-detail/mpf-fund-detail.component';
 import { FeedCardComponent } from './feed-card/feed-card.component';
-import { MpfFundTypeService } from './mpf-fund-type.service';
+import { RiskAssessmentComponent} from './risk-assessment/risk-assessment.component';
+import { MpfFundService } from './mpf-fund.service';
 import { FeedService } from './feed-service.service';
 import { OperationResult } from './operation-result';
 import { Observable } from 'rxjs/Observable';
@@ -11,7 +12,7 @@ import { Observable } from 'rxjs/Observable';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [MpfFundTypeService,FeedService]
+  providers: [MpfFundService,FeedService]
 })
 export class AppComponent {
   title = 'MPF compare';
@@ -23,7 +24,7 @@ export class AppComponent {
   listFundTypeComp: ListFundTypeComponent;
   mpfFundDetailComp: MpfFundDetailComponent;
 
-  constructor(private listMpfService: MpfFundTypeService) {
+  constructor(private listMpfService: MpfFundService) {
      this.activeTab = 0 ;
   }
 

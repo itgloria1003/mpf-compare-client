@@ -53,7 +53,7 @@
         </dl>
         <dl class="row">
           <dt class="col-sm-3">Lastest FER (%)</dt>
-          <dd class="col-sm-9">{{mpfFundDetail1.latestFER | nullToNaPipe}}</dd>
+          <dd class="col-sm-9">{{mpfFundDetail1.latestFER | nullToNaPipe| percent}}</dd>
         </dl>
         <dl class="row">
           <dt class="col-sm-3">OCI 1 year</dt>
@@ -63,13 +63,13 @@
         </dl>
         <dl class="row">
           <dt class="col-sm-3">Fund Risk Indicator (%)</dt>
-          <dd class="col-sm-9">{{mpfFundDetail1.fundRiskIndicator | nullToNaPipe}}</dd>
+          <dd class="col-sm-9">{{mpfFundDetail1.fundRiskIndicator | nullToNaPipe| percent}}</dd>
         </dl>
         <dl class="row">
           <dt class="col-sm-3">Annualized Return 5 Year (%) </dt>
-          <dd class="col-sm-3">{{mpfFundDetail1.annualReturn5yr | nullToNaPipe}}</dd>
+          <dd class="col-sm-3">{{mpfFundDetail1.annualReturn5yr | nullToNaPipe | percent}}</dd>
            <dt class="col-sm-3">Annualized Return 10 Year (%)</dt>
-          <dd class="col-sm-3">{{mpfFundDetail1.annualReturn10yr |nullToNaPipe}}</dd>
+          <dd class="col-sm-3">{{mpfFundDetail1.annualReturn10yr | nullToNaPipe | percent}}</dd>
         </dl>
       </div>
     </div>

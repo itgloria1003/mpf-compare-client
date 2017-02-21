@@ -1,0 +1,77 @@
+
+.registrationform
+{
+    padding: 30px;
+    background:darkslateblue;
+    color: #FFF !important;
+}
+
+input, textarea{
+    
+    color: #FFF;
+}
+.control-label
+{
+    color: #FFFFFF;
+}
+.checkbox
+{
+   
+    color: #F7F7F7;
+}
+
+
+.radio
+{
+    color: #F7F7F7;
+}
+legend
+{
+    text-align: left;
+    color: #FFFFFF;
+    font-weight: lighter;
+    font-size: 26px;
+}
+
+
+ textarea.form-control
+{
+    border-style: none none dotted none;
+    border-width: 1px;
+    border-color: #FFFFFF !important;
+    color: #fff;
+    -moz-border-radius: 0px;
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    -o-transition: all .3s;
+    -moz-transition: all .3s;
+    -webkit-transition: all .3s;
+    -ms-transition: all .3s;
+    transition: all .3s;
+}
+
+textarea, 
+textarea.form-control {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	line-height: 30px;   color: #fff;
+}
+
+input[type="text"]:focus, 
+textarea:focus, 
+textarea.form-control:focus {
+	outline: 0;
+	
+  
+    -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none;
+}
+
+input[type="text"]:-moz-placeholder, textarea:-moz-placeholder, textarea.form-control:-moz-placeholder
+{
+    color: #999999;
+}
+input[type="text"]:-ms-input-placeholder, textarea:-ms-input-placeholder, textarea.form-control:-ms-input-placeholder { color: #999999; }
+input[type="text"]::-webkit-input-placeholder, textarea::-webkit-input-placeholder, textarea.form-control::-webkit-input-placeholder { color: #999999; }
