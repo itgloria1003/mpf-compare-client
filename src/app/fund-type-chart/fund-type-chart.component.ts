@@ -32,13 +32,13 @@ export class FundTypeChartComponent implements OnInit {
     this.MpfFundService.getFundTypeStats(this.showChartForm.controls['asOfDate'].value)
     .subscribe(response => {
       this.statList = response;
-      this.pieChartData= [];
-      this.pieChartLabels = [];
+      let chartData = []; 
+        
       for (var i = 0; i<this.statList.length; i++){
         this.pieChartLabels.push(this.statList[i].fundType);
-        this.pieChartData.push(this.statList[i].netAssetValue);
+        chartData.push(this.statList[i].netAssetValue);
       }
-      this.updateChart();
+      this.updateChart( chartData);
     });
     
       
@@ -58,17 +58,17 @@ export class FundTypeChartComponent implements OnInit {
 
   @ViewChild( BaseChartDirective ) chart: BaseChartDirective;
 
-  private updateChart(){
-    this.chart.datasets = this.pieChartData;
-   
-    let _dataSets:Array<any> = new Array(this.chart.datasets.length);
-   for (let i = 0; i < this.chart.datasets.length; i++) {
-      _dataSets[i] = {data: new Array(this.chart.datasets[i].data.length), label: this.chart.datasets[i].label};
-      for (let j = 0; j < this.chart.datasets[i].data.length; j++) {
-        _dataSets[i].data[j] = this.chart.datasets[i].data[j];
-      }
-   }
-   this.chart.datasets = _dataSets;
-   this.chart.ngOnChanges({});
+  private updateChart(chartData){
+    let clone = JSON.parse(JSON.stringify(this.pieChartData));
+    clone[0].data = chartData;
+    this.pieChartData = clone;
+    /**
+     * (My guess), for Angular to recognize the change in the dataset
+     * it has to change the dataset variable directly,
+     * so one way around it, is to clone the data, change it and then
+     * assign it;
+     */
+    
+    
   }
 }

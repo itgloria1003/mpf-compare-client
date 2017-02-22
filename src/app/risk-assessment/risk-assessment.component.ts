@@ -1,9 +1,9 @@
-import { Component, OnInit ,} from '@angular/core';
+import { Component, OnInit, } from '@angular/core';
 import { RiskTestQuestion } from '../model/risk-test-question';
 import { RiskTestAnswer } from '../model/risk-test-answer';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MpfFundService} from '../mpf-fund.service';
-import { MpfFundDetail} from '../mpf-fund-detail';
+import { MpfFundService } from '../mpf-fund.service';
+import { MpfFundDetail } from '../mpf-fund-detail';
 
 
 @Component({
@@ -13,14 +13,17 @@ import { MpfFundDetail} from '../mpf-fund-detail';
 })
 export class RiskAssessmentComponent implements OnInit {
 
- riskCat : number = 0; 
- riskCatDesc:string; 
- form:FormGroup ;
- mpfFundDetails: MpfFundDetail[];  
+  riskCat: number = 0;
+  riskCatDesc: string;
+  form: FormGroup;
+  mpfFundDetails: MpfFundDetail[];
+  private score: number = 0;
+  private isSubmitted: boolean = false;
+
 
   private questions: RiskTestQuestion[] = [
     {
-      selected:'',
+      selected: '',
       question: 'What is the objective of your retirement investment?',
       answerOptions: [
         {
@@ -48,7 +51,7 @@ export class RiskAssessmentComponent implements OnInit {
     ,
 
     {
-       selected:'',
+      selected: '',
       question: 'How many years are you away from retirement?',
       answerOptions: [
         {
@@ -77,7 +80,7 @@ export class RiskAssessmentComponent implements OnInit {
 
 
     {
-       selected:'',
+      selected: '',
       question: 'Which of the following best describes your investment approach?',
       answerOptions: [
         {
@@ -106,7 +109,7 @@ export class RiskAssessmentComponent implements OnInit {
 
 
     {
-       selected:'',
+      selected: '',
       question: 'What makes up the biggest portion of your investments?',
       answerOptions: [
         {
@@ -134,7 +137,7 @@ export class RiskAssessmentComponent implements OnInit {
     }
     ,
     {
-       selected:'',
+      selected: '',
       question: 'Among the four hypothetical portfolios below, which one will you choose as your retirement investment?',
       answerOptions: [
         {
@@ -163,67 +166,65 @@ export class RiskAssessmentComponent implements OnInit {
 
   ];
 
- private score:number = 0;
- private isSubmitted:boolean = false;  
- private MpfFundDetail
-onReset(){
-  this.isSubmitted = false;
-  this.score = 0 ;
-}
 
- onSubmit(){
-  
-  this.score = 0 ;
-   this.questions.forEach(function(question){
-    console.log(question.selected);
-      question.answerOptions.forEach(function(answerOption,index){
-        if (question.selected == answerOption.key){
-            this.score = this.score+ answerOption.score;
+  onReset() {
+    this.isSubmitted = false;
+    this.score = 0;
+  }
+
+  onSubmit() {
+
+    this.score = 0;
+    this.questions.forEach(function(question) {
+      console.log(question.selected);
+      question.answerOptions.forEach(function(answerOption, index) {
+        if (question.selected == answerOption.key) {
+          this.score = this.score + answerOption.score;
         }
-      },this);
-      
-   },this);
-  console.log(this.score);
-   if (this.score>=14){
-     this.riskCat = 3 ; 
-     this.riskCatDesc = 'High';
-  } else if (this.score>=6){
-    this.riskCat = 2; 
-     this.riskCatDesc = 'Medium';
-   } else {
-     this.riskCat = 1; 
-     this.riskCatDesc = 'Low';
+      }, this);
 
-   }
-   this.mpfFundService.getMpfFundDetails({riskCat:this.riskCat})
-   .subscribe(details=>this.mpfFundDetails = details,
-   ()=> {
-     alert('error in loading the data, the server seems to be down');   
-   }), function(){
-     this.isSubmitted = true;
-   };
-   
-   
-   
-   
- }
+    }, this);
+    console.log(this.score);
+    if (this.score >= 14) {
+      this.riskCat = 3;
+      this.riskCatDesc = 'High';
+    } else if (this.score >= 6) {
+      this.riskCat = 2;
+      this.riskCatDesc = 'Medium';
+    } else {
+      this.riskCat = 1;
+      this.riskCatDesc = 'Low';
+
+    }
+    this.mpfFundService.getMpfFundDetails({ riskCat: this.riskCat })
+      .subscribe(details => this.mpfFundDetails = details,
+      () => {
+        alert('error in loading the data, the server seems to be down');
+      }), function() {
+        this.isSubmitted = true;
+      };
+
+
+
+
+  }
 
 
 
   constructor(private mpfFundService: MpfFundService) {
-    this.form=  new FormGroup({
-   option0: new FormControl('',Validators.required),
-   option1: new FormControl('',Validators.required),
-   option2: new FormControl('',Validators.required),
-   option3: new FormControl('',Validators.required),
-   option4: new FormControl('',Validators.required)
+    this.form = new FormGroup({
+      option0: new FormControl('', Validators.required),
+      option1: new FormControl('', Validators.required),
+      option2: new FormControl('', Validators.required),
+      option3: new FormControl('', Validators.required),
+      option4: new FormControl('', Validators.required)
 
-  });
-   
+    });
+
   }
-  
-   
-  
+
+
+
   ngOnInit() {
   }
 
